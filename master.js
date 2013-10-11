@@ -2,3 +2,5 @@
 
 
 }).call(this);
+
+//# sourceURL=analysis.coffee

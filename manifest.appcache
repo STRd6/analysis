@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# 1381459340838
+
+CACHE:
+index.html
+//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.6.3/coffee-script.min.js
+http://www.jshint.com/res/jshint.js
+http://strd6.github.io/require/v0.2.1.js
+
+NETWORK:
+https://*
+http://*
+*
