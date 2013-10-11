@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>analysis</title>
+  <title>interactive_runtime</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="http://strd6.github.io/cdn/parallel/docco.css" />
@@ -18,7 +18,7 @@
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1 id="analysis">Analysis</h1>
+              <h1 id="interactive-runtime">Interactive Runtime</h1>
 
             </div>
             <div class="content"><pre><code class="lang-coffeescript">
@@ -32,7 +32,8 @@
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <h2 id="tokens">Tokens</h2>
+              <p>Register our example runners.</p>
+<h2 id="tokens">Tokens</h2>
 
             </div>
             <div class="content"><pre><code class="lang-coffeescript">
@@ -46,15 +47,16 @@
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <blockquote>
-<pre><code>#! tokens
--&gt; &quot;hey&quot;</code></pre>
-</blockquote>
-<h2 id="nodes">Nodes</h2>
-
+              
             </div>
-            <div class="content"><pre><code class="lang-coffeescript">
-</code></pre>
+            <div class="content"><pre><code class="lang-coffeescript">Interactive.register <span class="string">"tokens"</span>, ({source, runtimeElement}) -&gt;
+  tokens = CoffeeScript.tokens(source, bare: <span class="literal">true</span>).map (token) -&gt;
+    token[<span class="number">0</span>]
+
+  outputElement = document.createElement <span class="string">"pre"</span>
+  runtimeElement.empty().append outputElement
+
+  outputElement.textContent = JSON.stringify(tokens, <span class="literal">null</span>, <span class="number">2</span>)</code></pre>
 </div>
         </li>
         
@@ -64,11 +66,7 @@
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <blockquote>
-<pre><code>#! nodes
--&gt; &quot;yolo&quot;</code></pre>
-</blockquote>
-<h2 id="live-examples">Live Examples</h2>
+              <h2 id="nodes">Nodes</h2>
 
             </div>
             <div class="content"><pre><code class="lang-coffeescript">
@@ -82,14 +80,15 @@
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <blockquote>
-<pre><code>#! setup
-require &quot;./interactive_runtime&quot;</code></pre>
-</blockquote>
-
+              
             </div>
-            <div class="content"><pre><code class="lang-coffeescript">
-</code></pre>
+            <div class="content"><pre><code class="lang-coffeescript">Interactive.register <span class="string">"nodes"</span>, ({source, runtimeElement}) -&gt;
+  nodes = CoffeeScript.nodes(source, bare: <span class="literal">true</span>)
+
+  outputElement = document.createElement <span class="string">"pre"</span>
+  runtimeElement.empty().append outputElement
+
+  outputElement.textContent = JSON.stringify(nodes, <span class="literal">null</span>, <span class="number">2</span>)</code></pre>
 </div>
         </li>
         
